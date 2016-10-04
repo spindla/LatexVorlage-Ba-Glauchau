@@ -1,0 +1,155 @@
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%	Dokument: 	Praxisbeleg
+%	Titel:		
+%	Verfasser:	
+%	Zeitraum:	X. Praxispahse
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\documentclass[
+	12pt,
+	a4paper,
+	oneside,
+								% scrreprt ab hier
+	headsepline,				% Linie unter der Kopfzeile	
+	footnosepline,
+	normalheadings,				% Überschriften normal setzen
+	numbers=noenddot,			% Keinen Punkt hinter die letzte Zahl eines Kapitels 
+	appendixprefix,				% Anhang
+	openany,
+	cleardoubleplain,
+	abstracton,
+	idxtotoc,					% Index soll im Inhaltsverzeichnis auftauchen
+	liststotoc,
+	DIV15,
+	bibtotoc,
+	BCOR7mm						% Bindungskorrektur: BCOR <Breite des 				Bindungsverlustes> 
+]{scrreprt}
+%----------------------------------------------------------------------
+%	PAKETE
+%----------------------------------------------------------------------
+	
+	\usepackage[utf8]{inputenc}
+	\usepackage[hyphens]{url}	% Zeilenumbruch in URL's
+	\usepackage{cite} 			% Literaturverzeichnis
+	\usepackage{setspace}		% Zeilenabstände festlegen
+	\usepackage[T1]{fontenc}	% EC-Schriften verwenden (vs. DC) da 8-Bit
+	\usepackage{ae,aecompl}		% virtuelle-CM-Fonts
+	\usepackage{booktabs}
+	\usepackage{chngcntr}
+	\usepackage{microtype}
+	\usepackage[bottom, hang]{footmisc} %Fußnoten manipulieren
+	\setlength{\footnotemargin}{0pt} %Fußnoten werden nicht mehr ab zewiter Zeile eingerückt
+	\usepackage
+	{
+		acronym,				% Abkürzungsverzeichnis
+		ngerman,				% Deutsche Trennungen (NEUE Rechtschreibung), 
+		bibgerm,				% Deutsche Bibliographie (ALTE Rechtschreibung)
+		calc,					% Erweiterung der arithmetischen Funktionen in LaTeX
+								% wird verwendet um Titelseite zu zentrieren
+		color,					% im Laufenden Text einfach mit \color{Farbe) zwischen den 
+								% Farben umschalten, wobei Farbe einfach 
+								% durch z.B. red, blue, black etc. ersetzt wird
+								% \textcolor{farbe){Text)
+		colortbl,				% Farben innerhalb Tabelle
+		fancybox,				% shadowbox, doublebox, ovalbox, Ovalbox 
+		fancyvrb,				% verbatim Erweiterung:
+		float,					% Positionierung von Gleitobjekten
+								% 'figure'- oder 'table'-Umgebung die 
+								% Positionierung [H] gesetzt werden
+		floatflt,				% Bilder im Fließtext
+		wrapfig,
+		graphicx,				
+		mdwlist,				% compact list: itemize* ..
+		scrdate,				% \todaysname 
+		scrtime,				% \thistime
+		scrpage2,				% Kopf- und Fuzeilen flexibel gestalten
+		tabularx				% Blocksatzspalten
+	}
+	\usepackage[				%Referenzen
+		colorlinks=false,
+		linktocpage=true,
+		hypertexnames=true,
+		pdfpagelabels=true,
+		pdfborder={0 0 0},
+		linkcolor=red,
+	    citecolor=cyan,
+	    urlcolor=blue,
+	    bookmarksnumbered=true
+		]{hyperref}
+%----------------------------------------------------------------------
+%	Einstellungen
+%----------------------------------------------------------------------
+\pagestyle{scrheadings}					% Standart  Kopf- und Fuzeile
+\cfoot[]{}								% Seitenzahlen rechts anordnen
+\ofoot[\pagemark]{\pagemark}
+\counterwithout{footnote}{chapter}		%Zähler wird für Fussnote nicht nach neuem Kapitel zurückgesetzt
+%\setkomafont{pageheadfoot}{\small\scshape}
+ % --------------------------------------------------------------------
+ %Vermeiden einzelner Zeilen am Ende einer Seite oder oben auf einer neuen Seite
+ \clubpenalty10000
+ \widowpenalty10000
+ \usepackage{pdfpages}
+ \usepackage{subfigure} 
+ \usepackage{graphicx}
+ \usepackage{rotating}
+ \usepackage{tocstyle} 			% KOMA-Script-Paket mit eigener Anleitung tocstyle.pdf.
+ \usetocstyle{allwithdot}
+ \setlength{\parindent}{0pt}	% Erstzeileneinzug auf 0pt	
+ \topmargin = 0mm
+ \headsep = 8pt
+ \voffset = 0pt
+ %---------------------------------------------------------------------
+ % neue Umgebung für verwendete Sätze und Beispiele
+ \newtheorem{bsp}{Beispiel}[chapter]
+ \newtheorem{satz}{Satz}[chapter]
+ 
+ %---------------------------------------------------------------------
+ %	includeonly
+ %---------------------------------------------------------------------
+ \includeonly{		% Gibt an, welche Dateien der include-Befehl 
+ 					% tatschlich einfuegen darf.
+   Metadaten,		% Variablen setzen
+   Titelseite,		% Titelseite, Zusammenfassung und Inhaltsverzeichnis
+   00Verzeichnisse,
+   % Alle per include einzulesenden Dateien müssen hier angegeben sein!
+   01ErsteKapitel,
+   Anhang,
+   Eidesstattliche_Erklaerung
+   }
+	%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	%	Begin Textteil - Befehle nur noch lokal Wirksam
+	%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\begin{document}
+	\include{Metadaten} 
+	\include{Titelseite}
+	\include{00Verzeichnisse}
+	\include{01ErsteKapitel}
+	
+
+	%======================================================================
+	%	Literaturverzeichnis
+	%======================================================================
+	
+	\manualmark
+	\markboth{titel}{Literaturverzeichnis}
+	\bibliographystyle{alphabwl7b}
+	\bibliography{literatur}
+	
+	%======================================================================
+	%	Anhang
+	%======================================================================
+	
+	\manualmark
+	\cleardoublepage
+	\include{Anhang}
+	
+	%======================================================================
+	%	Eidesstattliche Erklärung
+	%======================================================================
+	
+	\manualmark
+	\cleardoublepage
+	\include{Eidesstattliche_Erklaerung}
+	
+\end{document}

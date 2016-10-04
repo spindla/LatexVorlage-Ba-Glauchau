@@ -1,0 +1,39 @@
+%======================================================================
+%	Metadaten
+%======================================================================
+
+\newcommand{\dcsubject}{Preaxisbeleg}
+\newcommand{\dctitle}{Thema}
+\newcommand{\dcauthorlastname}{Nachname}
+\newcommand{\dcauthorfirstname}{Vorname}
+\newcommand{\dcdate}{\today}
+\newcommand{\dcauthoremail}{E-Mail}
+\newcommand{\dckeywords}{keyword}
+\newcommand{\dcstreet}{Starße}
+\newcommand{\dcplace}{PLZ, Ort}
+\newcommand{\dcuni}{Uni}
+\newcommand{\dccompany}{Firma}
+\newcommand{\dccompanyadr}{Firma Straße}
+\newcommand{\refereecompany}{Betreuer Firma}
+\newcommand{\refereeuni}{Betreuer Uni}
+\newcommand{\Abstand}{\\[0.4cm]}
+\onehalfspacing
+
+\renewcommand \thechapter {\arabic{chapter}}
+\renewcommand \thesection {\arabic{chapter}.\arabic{section}}
+\renewcommand \thesubsection {\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand \thesubsubsection {\arabic{chapter}.\arabic{section}.\arabic{subsection}.\alph{subsubsection})}
+\renewcommand \theparagraph {} 
+
+%%======================================================================
+% Einstellungen des Hyperref-Paketes
+\hypersetup
+{
+	pdftitle	= {\dctitle},
+	pdfsubject	= {\dcsubject, \dcdate},
+	pdfauthor	= {\dcauthorfirstname~\dcauthorlastname, \dcauthoremail},
+	pdfkeywords	= {\dckeywords},
+	pdfcreator	= {pdfTeX with Hyperref and Thumbpdf},
+	pdfproducer	= {LaTeX, hyperref, thumbpdf}
+}
+%%======================================================================
