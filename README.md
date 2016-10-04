@@ -1,0 +1,1 @@
+# LatexVorlage-Ba-Glauchau
