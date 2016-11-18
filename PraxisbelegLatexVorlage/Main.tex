@@ -37,6 +37,8 @@
 	\usepackage{booktabs}
 	\usepackage{chngcntr}
 	\usepackage{microtype}
+	\usepackage{listings}
+	\usepackage[usenames,dvipsnames]{xcolor}
 	\usepackage[bottom, hang]{footmisc} %Fußnoten manipulieren
 	\setlength{\footnotemargin}{0pt} %Fußnoten werden nicht mehr ab zewiter Zeile eingerückt
 	\usepackage
@@ -110,6 +112,38 @@
  \renewcommand{\subsubsectionautorefname}{Abschnitt}
  \renewcommand{\figureautorefname}{Abb.}
  \renewcommand{\tableautorefname}{Tab.}
+ \renewcommand{\lstlistingname}{Quellcode}% Listing -> Algorithm
+ \renewcommand{\lstlistlistingname}{Liste über Quellcodes}% List of Listings -> List of Algorithms
+ %---------------------------------------------------------------------
+ %Sprachen definieren
+ \lstdefinelanguage{Ini}
+ {
+ 	basicstyle=\ttfamily\small,
+ 	columns=fullflexible,
+ 	morecomment=[s][\color{Orchid}\bfseries]{[}{]},
+ 	morecomment=[l]{\#},
+ 	morecomment=[l]{;},
+ 	commentstyle=\color{green}\ttfamily,
+ 	morekeywords={},
+ 	otherkeywords={=,:},
+ 	keywordstyle={\color{red}\bfseries}
+ }
+ 
+ \definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+ \definecolor{greencomments}{rgb}{0,0.5,0}
+ \definecolor{redstrings}{rgb}{0.9,0,0}
+ \lstset{language=[Sharp]C, %Standardsprach ist C#
+ 	showspaces=false,
+ 	showtabs=false,
+ 	breaklines=true,
+ 	showstringspaces=false,
+ 	breakatwhitespace=true,
+ 	escapeinside={(*@}{@*)},
+ 	commentstyle=\color{greencomments},
+ 	keywordstyle=\color{bluekeywords},
+ 	stringstyle=\color{redstrings},
+ 	basicstyle=\ttfamily
+ }
  
  %---------------------------------------------------------------------
  %	includeonly
